@@ -1,47 +1,50 @@
-# Genetik Algoritma ile Gülen Yüz Üretimi
+# Evolving a Smiley Face with a Genetic Algorithm
 
-28x28 piksellik beyaz bir görüntüde, elle çizilmiş bir gülen yüz taslağını (iki göz ve kesik çizgili gülümseme) genetik algoritma ile sıfırdan evrimleştiren küçük bir deneme.
+[English](README.md) | [Türkçe](README.tr.md)
 
-![Evrim aşamaları](evrim.png)
+A small experiment that evolves a hand-drawn smiley face sketch (two eyes and a dotted smile) on a 28x28 pixel white image from scratch, using a genetic algorithm.
 
-## Nasıl çalışıyor?
+![Evolution stages](evrim.png)
 
-| Bileşen | Seçim |
+## How it works
+
+| Component | Choice |
 |---|---|
-| Birey | 784 bitlik dizi (28x28 piksel, 1 = siyah, 0 = beyaz) |
-| Başlangıç | Rastgele gürültü |
-| Uygunluk | Hedefle eşleşen piksel sayısı (en fazla 784) |
-| Seçilim | Turnuva seçimi (boyut 3) |
-| Çaprazlama | Uniform çaprazlama |
-| Mutasyon | Gen başına 1/784 olasılıkla bit çevirme |
-| Elitizm | En iyi 2 birey bir sonraki nesle aynen aktarılır |
-| Popülasyon | 200 birey |
+| Individual | 784-bit array (28x28 pixels, 1 = black, 0 = white) |
+| Initialization | Random noise |
+| Fitness | Number of pixels matching the target (max 784) |
+| Selection | Tournament selection (size 3) |
+| Crossover | Uniform crossover |
+| Mutation | Bit flip with probability 1/784 per gene |
+| Elitism | The best 2 individuals are copied unchanged to the next generation |
+| Population | 200 individuals |
 
-Hedef görüntü `hedef_olustur()` fonksiyonunda koordinatlarla tanımlanır: iki göz (halka ve ortada nokta) ile parabol şeklinde dizilmiş kesik çizgili gülümseme.
+The target image is defined with coordinates in the `hedef_olustur()` function: two eyes (a ring with a dot in the center) and a dotted smile arranged along a parabola.
 
-## Sonuç
+## Result
 
-Sabit tohumla (`seed=42`) algoritma **102. nesilde** 784/784 piksele ulaşır.
+With a fixed seed (`seed=42`), the algorithm reaches **784/784 pixels at generation 102**.
 
-![Uygunluk grafiği](uygunluk.png)
+![Fitness curve](uygunluk.png)
 
-## Kullanım
+## Usage
 
 ```bash
 pip install numpy matplotlib
 python ga_smiley.py
 ```
 
-Çalıştırınca konsola son nesil ve en iyi uygunluk yazılır, ayrıca şu dosyalar üretilir:
+Running it prints the final generation and the best fitness to the console, and generates:
 
-- `evrim.png`: hedef ile seçili nesillerdeki (0, 25, 50, 100, ...) en iyi bireyler
-- `uygunluk.png`: nesillere göre en iyi uygunluk grafiği
+- `evrim.png`: the target next to the best individual at selected generations (0, 25, 50, 100, ...)
+- `uygunluk.png`: best fitness per generation
 
-## Notlar
+## Notes
 
-Uygunluk doğrudan hedef görüntüyle karşılaştırıldığı için bu problem genetik algoritma açısından kolaydır (OneMax benzeri). Daha ilginç bir sürüm için birey; göz konumu, yarıçap ve gülümseme eğrisi gibi birkaç parametreyle temsil edilebilir.
+Because fitness is computed by comparing directly against the target image, this problem is easy for a genetic algorithm (similar to OneMax). A more interesting variant would represent each individual with a few parameters, such as eye positions, radii and the curvature of the smile.
 
-## Dosyalar
+## Files
 
-- `ga_smiley.py`: algoritma ve görselleştirme
-- `evrim.png`, `uygunluk.png`: örnek çıktılar
+- `ga_smiley.py`: algorithm and visualization
+- `evrim.png`, `uygunluk.png`: example outputs
+- `README.tr.md`: Turkish version of this README
