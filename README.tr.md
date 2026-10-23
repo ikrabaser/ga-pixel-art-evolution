@@ -1,6 +1,6 @@
 # Genetik Algoritma ile Gülen Yüz Üretimi
 
-[English](README.md) | **Türkçe**
+[English](README.md) | **Turkish**
 
 28x28 piksellik beyaz bir görüntüde, elle çizilmiş bir gülen yüz taslağını (iki göz ve kesik çizgili gülümseme) genetik algoritma ile sıfırdan evrimleştiren küçük bir deneme.
 
