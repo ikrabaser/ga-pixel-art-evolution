@@ -1,6 +1,6 @@
 # Evolving a Smiley Face with a Genetic Algorithm
 
-[English](README.md) | [Türkçe](README.tr.md)
+[English](README.md) | [Turkish](README.tr.md)
 
 A small experiment that evolves a hand-drawn smiley face sketch (two eyes and a dotted smile) on a 28x28 pixel white image from scratch, using a genetic algorithm.
 
